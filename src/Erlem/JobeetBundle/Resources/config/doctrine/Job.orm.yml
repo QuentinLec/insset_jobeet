@@ -1,5 +1,6 @@
 Erlem\JobeetBundle\Entity\Job:
     type: entity
+    repositoryClass: Erlem\JobeetBundle\Repository\JobRepository
     table: job
     id:
         id:
@@ -59,5 +60,10 @@ Erlem\JobeetBundle\Entity\Job:
                 name: category_id
                 referencedColumnName: id
     lifecycleCallbacks:
+<<<<<<< HEAD
+        prePersist: [ setCreatedAtValue, setExpiresAtValue ]
+        preUpdate: [ setUpdatedAtValue ]
+=======
         prePersist: [ setTokenValue, preUpload, setCreatedAtValue, setExpiresAtValue ]
         preUpdate: [ setUpdatedAtValue ]
+>>>>>>> 0e29e14904d980d574a9aaf699a2e0157b6d7702

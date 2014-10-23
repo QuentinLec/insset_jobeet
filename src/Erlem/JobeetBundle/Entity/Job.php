@@ -507,6 +507,8 @@ class Job
         return Jobeet::slugify($this->getLocation());
     }  
 
+<<<<<<< HEAD
+=======
     
     public function setTokenValue()
     {
@@ -523,11 +525,20 @@ class Job
         // Add your code here
     }
 
+>>>>>>> 0e29e14904d980d574a9aaf699a2e0157b6d7702
     /**
      * @ORM\PrePersist
      */
     public function setExpiresAtValue()
     {
+<<<<<<< HEAD
+        if(!$this->getExpiresAt()) {
+            $now = $this->getCreatedAt() ? $this->getCreatedAt()->format('U') : time();
+            $this->expires_at = new \DateTime(date('Y-m-d H:i:s', $now + 86400 * 30));
+        }
+    }
+}
+=======
         // Add your code here
     }
 
@@ -543,3 +554,4 @@ class Job
     }
 }
 
+>>>>>>> 0e29e14904d980d574a9aaf699a2e0157b6d7702
