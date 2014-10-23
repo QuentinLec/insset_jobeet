@@ -506,32 +506,13 @@ class Job
     {
         return Jobeet::slugify($this->getLocation());
     }  
-
 <<<<<<< HEAD
-=======
-    
-    public function setTokenValue()
-    {
-        if(!$this->getToken()) {
-            $this->token = sha1($this->getEmail().rand(11111, 99999));
-        }
-    }
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function preUpload()
-    {
-        // Add your code here
-    }
-
->>>>>>> 0e29e14904d980d574a9aaf699a2e0157b6d7702
     /**
      * @ORM\PrePersist
      */
     public function setExpiresAtValue()
     {
-<<<<<<< HEAD
         if(!$this->getExpiresAt()) {
             $now = $this->getCreatedAt() ? $this->getCreatedAt()->format('U') : time();
             $this->expires_at = new \DateTime(date('Y-m-d H:i:s', $now + 86400 * 30));
@@ -539,19 +520,5 @@ class Job
     }
 }
 =======
-        // Add your code here
-    }
-
-
-    public static function getTypes()
-    {
-        return array('full-time' => 'Full time', 'part-time' => 'Part time', 'freelance' => 'Freelance');
-    }
-     
-    public static function getTypeValues()
-    {
-        return array_keys(self::getTypes());
-    }
 }
-
 >>>>>>> 0e29e14904d980d574a9aaf699a2e0157b6d7702

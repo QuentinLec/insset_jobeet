@@ -25,7 +25,6 @@ class JobType extends AbstractType
             ->add('location')
             ->add('description')
             ->add('how_to_apply')
-            ->add('token')
             ->add('is_public')
             ->add('email')
         ;
