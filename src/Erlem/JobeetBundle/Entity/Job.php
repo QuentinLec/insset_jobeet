@@ -507,12 +507,12 @@ class Job
         return Jobeet::slugify($this->getLocation());
     }  
 
-    /**
-     * @ORM\PrePersist
-     */
+    
     public function setTokenValue()
     {
-        // Add your code here
+        if(!$this->getToken()) {
+            $this->token = sha1($this->getEmail().rand(11111, 99999));
+        }
     }
 
     /**
@@ -530,4 +530,16 @@ class Job
     {
         // Add your code here
     }
+
+
+    public static function getTypes()
+    {
+        return array('full-time' => 'Full time', 'part-time' => 'Part time', 'freelance' => 'Freelance');
+    }
+     
+    public static function getTypeValues()
+    {
+        return array_keys(self::getTypes());
+    }
 }
+
