@@ -31,6 +31,12 @@ class Category {
     private $affiliates;
 
     /**
+     *
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $more_jobs;
+
+    /**
      * Constructor
      */
     public function __construct() {
@@ -134,6 +140,14 @@ class Category {
 
     public function getSlug() {
         return Jobeet::slugify($this->getName());
+    }
+
+    public function setMoreJobs($jobs) {
+        $this->more_jobs = $jobs >= 0 ? $jobs : 0;
+    }
+
+    public function getMoreJobs() {
+        return $this->more_jobs;
     }
 
 }

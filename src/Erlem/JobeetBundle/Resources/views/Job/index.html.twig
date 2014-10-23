@@ -4,7 +4,7 @@
     {{ parent() }}
     <link rel="stylesheet" href={{ asset('bundles/erlemjobeet/css/jobs.css') }} type="text/css" media="all" />
 {% endblock %}
- 
+
 {% block content %}
     <div id="jobs">
         <table class="jobs">
@@ -13,12 +13,18 @@
                     <td class="location">{{ entity.location }}</td>
                     <td class="position">
                         <a href={{ path('erlem_job_show', { 'id': entity.id, 'company': entity.companySlug, 'location': entity.locationSlug, 'position': entity.positionSlug}) }}>
-                          {{ entity.position }}
+                            {{ entity.position }}
                         </a>
                     </td>
                     <td class="company">{{ entity.company }}</td>
                 </tr>
-            {% endfor %}
-        </table>
+            </table>
+        {% endfor %}
+        {% if category.morejobs %}
+            <div class="more_jobs">
+                and <a href={{ path('ErlemJobeetBundle_category', { 'slug': category.slug }) }}>{{ category.morejobs }}</a>
+                more...
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
