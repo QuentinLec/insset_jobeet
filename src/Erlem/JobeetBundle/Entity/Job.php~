@@ -506,6 +506,7 @@ class Job
     {
         return Jobeet::slugify($this->getLocation());
     }  
+<<<<<<< HEAD
 
     /**
      * @ORM\PrePersist
@@ -518,3 +519,6 @@ class Job
         }
     }
 }
+=======
+}
+>>>>>>> 0e29e14904d980d574a9aaf699a2e0157b6d7702
