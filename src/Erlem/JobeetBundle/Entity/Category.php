@@ -3,12 +3,13 @@
 namespace Erlem\JobeetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Erlem\JobeetBundle\Utils\Jobeet;
 
 /**
  * Category
  */
-class Category
-{
+class Category {
+
     /**
      * @var integer
      */
@@ -32,8 +33,7 @@ class Category
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->jobs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->affiliates = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -43,8 +43,7 @@ class Category
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -54,8 +53,7 @@ class Category
      * @param string $name
      * @return Category
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -66,8 +64,7 @@ class Category
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -77,8 +74,7 @@ class Category
      * @param \Erlem\JobeetBundle\Entity\Job $jobs
      * @return Category
      */
-    public function addJob(\Erlem\JobeetBundle\Entity\Job $jobs)
-    {
+    public function addJob(\Erlem\JobeetBundle\Entity\Job $jobs) {
         $this->jobs[] = $jobs;
 
         return $this;
@@ -89,8 +85,7 @@ class Category
      *
      * @param \Erlem\JobeetBundle\Entity\Job $jobs
      */
-    public function removeJob(\Erlem\JobeetBundle\Entity\Job $jobs)
-    {
+    public function removeJob(\Erlem\JobeetBundle\Entity\Job $jobs) {
         $this->jobs->removeElement($jobs);
     }
 
@@ -99,8 +94,7 @@ class Category
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getJobs()
-    {
+    public function getJobs() {
         return $this->jobs;
     }
 
@@ -110,8 +104,7 @@ class Category
      * @param \Erlem\JobeetBundle\Entity\Affiliate $affiliates
      * @return Category
      */
-    public function addAffiliate(\Erlem\JobeetBundle\Entity\Affiliate $affiliates)
-    {
+    public function addAffiliate(\Erlem\JobeetBundle\Entity\Affiliate $affiliates) {
         $this->affiliates[] = $affiliates;
 
         return $this;
@@ -122,8 +115,7 @@ class Category
      *
      * @param \Erlem\JobeetBundle\Entity\Affiliate $affiliates
      */
-    public function removeAffiliate(\Erlem\JobeetBundle\Entity\Affiliate $affiliates)
-    {
+    public function removeAffiliate(\Erlem\JobeetBundle\Entity\Affiliate $affiliates) {
         $this->affiliates->removeElement($affiliates);
     }
 
@@ -132,14 +124,16 @@ class Category
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAffiliates()
-    {
+    public function getAffiliates() {
         return $this->affiliates;
     }
 
-    public function __toString()
-    {
-      return $this->getName();
+    public function __toString() {
+        return $this->getName();
     }
-    
+
+    public function getSlug() {
+        return Jobeet::slugify($this->getName());
+    }
+
 }
